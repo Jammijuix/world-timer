@@ -1,0 +1,3 @@
+# ignore the following files
+*datetime_of_country.py
+*time zone.py
