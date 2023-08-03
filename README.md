@@ -7,4 +7,4 @@ in the code it accepts two input which is then used to deternine the time of tha
 > the second accepts the users country, in any format.
 
 ## limitations of this code
-as of this date 02/08/2023 the code can't tell exact time if a country has more than 1 timezones.
+as of this date 02/08/2023 the code can't tell all the  time if a country has more than  one timezones. it  only tell's the first timezone in the list.
