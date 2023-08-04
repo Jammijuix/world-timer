@@ -8,7 +8,8 @@ print(datetime.now())
 try:
     name_of_users = input("please input your first name? ")
     name_of_country = input("please provide your country? ").capitalize().title()
-#name_of_continent = input("please provide your continent?")
+    name_of_city = input("please provide your Present City?").title()
+    #users_timezone = f'{name_of_country},{name_of_city}'
 
 # code that helps choose country.
     y = pycountry.countries
