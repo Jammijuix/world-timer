@@ -81,8 +81,8 @@ try:
             Users_country_alpha2_code = country_alpha2_code.alpha_2
             print(country_alpha2_code.alpha_2)
             #time_zone = pytz.all_timezones #timezone("Africa/Lagos")
-            tmZone = pytz.country_timezones[Users_country_alpha2_code]
-            country_time_zone = pytz.timezone(tmZone)
+            tmZone2 = pytz.country_timezones[Users_country_alpha2_code]
+            country_time_zone = pytz.timezone(tmZone2)
             country_time = datetime.now(country_time_zone)
             print(country_time.strftime("Date is %d-%m-%y and time is %H:%M:%S"))
         else:
