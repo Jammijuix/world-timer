@@ -62,19 +62,18 @@ try:
                     result = item
                     break  # Exit the loop after finding the match
 
-            if result:
+            '''if result:
                 print("Match found:", result)
             else:
-                print("No match found.")
+                print("No match found.")'''
         
             country_time_zone = pytz.timezone(result)
             country_time = datetime.now(country_time_zone)
             print(country_time.strftime("Date is %d-%m-%y and time is %H:%M:%S"))
         else:
             print("Please provide a valid country.")
-except Exception as e:
-    print("the error is:",e)
-try:
+    #except Exception as e:
+    #print("the error is:",e)
     if country_to_continent(country_name) == 'Africa':
         if country_name in country_list:
             x = country_name
