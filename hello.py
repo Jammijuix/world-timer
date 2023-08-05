@@ -38,18 +38,55 @@ except Exception as e:
     print("the Error is:",e)
 # function to displace your country time..
 try:
-    if country_name in country_list:
-        x = country_name
-        country_alpha2_code = pycountry.countries.get(name=x)
-        Users_country_alpha2_code = country_alpha2_code.alpha_2
-        print(country_alpha2_code.alpha_2)
-        #time_zone = pytz.all_timezones #timezone("Africa/Lagos")
-        tmZone = pytz.country_timezones[Users_country_alpha2_code]
-        print(tmZone[0])
-        country_time_zone = pytz.timezone(tmZone[0])
-        country_time = datetime.now(country_time_zone)
-        print(country_time.strftime("Date is %d-%m-%y and time is %H:%M:%S"))
-    else:
-        print("Please provide a valid country.")
+    if country_to_continent(country_name) == 'North America' or 'Asia' or 'South America' or 'Europe' or 'Oceania':
+        if country_name in country_list:
+            x = country_name
+            country_alpha2_code = pycountry.countries.get(name=x)
+            Users_country_alpha2_code = country_alpha2_code.alpha_2
+            print(country_alpha2_code.alpha_2)
+            #time_zone = pytz.all_timezones #timezone("Africa/Lagos")
+            tmZone = pytz.country_timezones[Users_country_alpha2_code]
+            #print(tmZone)
+            #code responsible for country actual time..
+                # Sample list
+            my_list = tmZone
+
+            # String to match
+            target_string = name_of_city
+            a = my_list
+            substring_to_find = name_of_city
+            result = None
+
+            for item in a:
+                if substring_to_find in item:
+                    result = item
+                    break  # Exit the loop after finding the match
+
+            if result:
+                print("Match found:", result)
+            else:
+                print("No match found.")
+        
+            country_time_zone = pytz.timezone(result)
+            country_time = datetime.now(country_time_zone)
+            print(country_time.strftime("Date is %d-%m-%y and time is %H:%M:%S"))
+        else:
+            print("Please provide a valid country.")
+except Exception as e:
+    print("the error is:",e)
+try:
+    if country_to_continent(country_name) == 'Africa':
+        if country_name in country_list:
+            x = country_name
+            country_alpha2_code = pycountry.countries.get(name=x)
+            Users_country_alpha2_code = country_alpha2_code.alpha_2
+            print(country_alpha2_code.alpha_2)
+            #time_zone = pytz.all_timezones #timezone("Africa/Lagos")
+            tmZone = pytz.country_timezones[Users_country_alpha2_code]
+            country_time_zone = pytz.timezone(tmZone)
+            country_time = datetime.now(country_time_zone)
+            print(country_time.strftime("Date is %d-%m-%y and time is %H:%M:%S"))
+        else:
+            print("Please provide a valid country.")
 except Exception as e:
     print("the error is:",e)
