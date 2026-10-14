@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezone Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find Your Country Timezone</h2>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required value="{{ request.POST.name }}">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required value="{{ request.POST.country }}">
+            </div>
+            <div class="form-group">
+                <label for="city">Present City:</label>
+                <input type="text" id="city" name="city" required value="{{ request.POST.city }}">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                {% if result.error %}
+                    <p class="error">{{ result.error }}</p>
+                {% else %}
+                    <p>Hello, <strong>{{ result.name }}</strong>!</p>
+                    <p>Your country's official name is: <strong>{{ result.country }}</strong></p>
+                    <p>Your Continent is: <strong>{{ result.continent }}</strong></p>
+                    <p>Timezone matched: <strong>{{ result.timezone }}</strong></p>
+                    <p>Current Time: <strong>{{ result.time }}</strong></p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
