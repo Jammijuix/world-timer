@@ -19,10 +19,7 @@ Upon submission, it processes the information and displays the exact timezone an
 ## How to Run Locally
 
 1. **Clone the repository** (if you haven't already).
-2. **Navigate to the project directory**:
-   ```bash
-   cd timezone_project
-   ```
+2. **Navigate to the root directory**.
 3. **Install the required dependencies**:
    ```bash
    pip install django pycountry pycountry-convert pytz
